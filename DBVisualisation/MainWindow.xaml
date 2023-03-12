@@ -1,0 +1,40 @@
+﻿<Window x:Class="DBVisualisation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DBVisualisation"
+        mc:Ignorable="d"
+        Title="Библиотека" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Name="ButtonStyle" TargetType="Button">
+            <Setter Property="ItemsControl.FontFamily" Value="Times New Roman"/>
+            <Setter Property="ItemsControl.Height" Value="20"/>
+            <Setter Property="ItemsControl.Width" Value="140"/>
+            <Setter Property="ItemsControl.FontSize" Value="14"/>
+            <Setter Property="ItemsControl.VerticalContentAlignment" Value="Center"/>
+            <Setter Property="ItemsControl.HorizontalAlignment" Value="Center"/>
+            <Setter Property="ItemsControl.Margin" Value="10,10,10,10"/>
+        </Style>
+    </Window.Resources>
+
+        <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Добро пожаловать в бибилиотеку" Background="Bisque" FontSize="22" HorizontalContentAlignment="Center" Foreground="Fuchsia"/>
+        <DataGrid x:Name="DataBaseView" Grid.Row="1" Grid.Column="0" AutoGenerateColumns="True" Margin="10,10,10,10" />
+        <StackPanel Grid.Row="1" Grid.Column="2" Width="200">
+            <Button Grid.Column="1" Grid.Row="1" Content="Показать данные" VerticalAlignment="Top"/>
+            <Button Grid.Column="1" Grid.Row="1" Content="Показать данные" VerticalAlignment="Top"/>
+            <Button Grid.Column="1" Grid.Row="1" Content="Показать данные" VerticalAlignment="Top"/>
+
+        </StackPanel>
+    </Grid>
+    
+</Window>

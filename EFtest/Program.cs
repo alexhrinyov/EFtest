@@ -10,7 +10,7 @@ namespace EFtest
             //EFUsing();
             UserRepository userRepository = new UserRepository();
             BookRepository bookRepository = new BookRepository();
-            bookRepository.Belong(1, 1);
+            bookRepository.Belong(2, 1);
             
 
         }

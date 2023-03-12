@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EFtest.Entities;
 
+
 namespace EFtest.Repositories
 {
     internal class BookRepository
@@ -88,7 +89,7 @@ namespace EFtest.Repositories
             {
                 var book = db.Books.FirstOrDefault(b => b.Id == bookId);
                 var user = db.Users.FirstOrDefault(u => u.Id == userId);
-                book.UserId = user.Id;
+                book.UserId= user.Id;
                 user.Books.Add(book);
                 book.User = user;
                 db.SaveChanges();

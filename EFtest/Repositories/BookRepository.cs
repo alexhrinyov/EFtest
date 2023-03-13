@@ -8,7 +8,7 @@ using EFtest.Entities;
 
 namespace EFtest.Repositories
 {
-    internal class BookRepository
+    public class BookRepository
     {
         //выбор объекта из БД по его идентификатору, выбор всех объектов,
         //добавление объекта в БД и его удаление из БД. А также специфичные методы:

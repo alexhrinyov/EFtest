@@ -10,7 +10,7 @@
         <Style x:Name="ButtonStyle" TargetType="Button">
             <Setter Property="ItemsControl.FontFamily" Value="Times New Roman"/>
             <Setter Property="ItemsControl.Height" Value="20"/>
-            <Setter Property="ItemsControl.Width" Value="140"/>
+            <Setter Property="ItemsControl.Width" Value="160"/>
             <Setter Property="ItemsControl.FontSize" Value="14"/>
             <Setter Property="ItemsControl.VerticalContentAlignment" Value="Center"/>
             <Setter Property="ItemsControl.HorizontalAlignment" Value="Center"/>
@@ -29,10 +29,33 @@
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Добро пожаловать в бибилиотеку" Background="Bisque" FontSize="22" HorizontalContentAlignment="Center" Foreground="Fuchsia"/>
         <DataGrid x:Name="DataBaseView" Grid.Row="1" Grid.Column="0" AutoGenerateColumns="True" Margin="10,10,10,10" />
-        <StackPanel Grid.Row="1" Grid.Column="2" Width="200">
-            <Button Grid.Column="1" Grid.Row="1" Content="Показать данные" VerticalAlignment="Top"/>
-            <Button Grid.Column="1" Grid.Row="1" Content="Показать данные" VerticalAlignment="Top"/>
-            <Button Grid.Column="1" Grid.Row="1" Content="Показать данные" VerticalAlignment="Top"/>
+        <StackPanel Grid.Row="1" Grid.Column="2" Width="auto">
+            <Label Content="Выберите, к какой таблице будут применяться операции:" Width="auto"/>
+            <GroupBox Margin="5">
+                <StackPanel>
+                    <RadioButton x:Name="Users" Content="Пользователи"></RadioButton>
+                    <RadioButton x:Name="Books" Content="Книги"></RadioButton>
+                    <Label Content="Id:"/>
+                    <TextBox x:Name="IdBox" Width="25" HorizontalAlignment="Left" Margin="5"/>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="Данные" Height="100">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                </Grid>
+ 
+            </GroupBox>
+            <Button Grid.Column="1" Grid.Row="1" Content="Показать всё" VerticalAlignment="Top" Click="SelectAll_Click"/>
+            <Button x:Name="SelectById" Grid.Column="1" Grid.Row="1" Content="Показать по Id" VerticalAlignment="Top" Click="SelectById_Click"/>
+            <Button x:Name="AddNew" Grid.Column="1" Grid.Row="1" Content="Добавить новую строку" VerticalAlignment="Top" Click="AddNew_Click"/>
 
         </StackPanel>
     </Grid>

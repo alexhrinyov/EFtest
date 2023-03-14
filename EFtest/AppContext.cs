@@ -22,7 +22,8 @@ namespace EFtest
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source = DESKTOP-BQ6LNRN\SQLEXPRESS; TrustServerCertificate = true; Database = EFtest; Trusted_Connection = True;");
+            //optionsBuilder.UseSqlServer(@"Data Source = DESKTOP-BQ6LNRN\SQLEXPRESS; TrustServerCertificate = true; Database = EFtest; Trusted_Connection = True;");
+            optionsBuilder.UseSqlServer(@"Data Source = GRINEV\TIMEXSQLSERVER; TrustServerCertificate = true; Database = EFtest; Trusted_Connection = True;");
         }
     }
 }

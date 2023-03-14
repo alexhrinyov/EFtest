@@ -58,10 +58,11 @@ namespace EFtest.Repositories
         /// Удаление книги
         /// </summary>
         /// <param name="book"></param>
-        public void DeleteBook(Book book)
+        public void DeleteBook(int id)
         {
             using (var db = new AppContext())
             {
+                var book = db.Books.FirstOrDefault(book => book.Id == id);
                 db.Books.Remove(book);
                 db.SaveChanges();
             }
@@ -71,7 +72,7 @@ namespace EFtest.Repositories
         /// Обновление года книги по Id
         /// </summary>
         /// <param name="id"></param>
-        public void UpdateName(int id, int newYear)
+        public void UpdateYear(int id, int newYear)
         {
             using (var db = new AppContext())
             {
@@ -95,5 +96,37 @@ namespace EFtest.Repositories
                 db.SaveChanges();
             }
         }
+
+        // Новые задания
+        //Получать список книг определенного жанра и вышедших между определенными годами.
+        //Получать количество книг определенного автора в библиотеке.
+        // Получать количество книг определенного жанра в библиотеке.
+        //   Получать булевый флаг о том, есть ли книга определенного автора и с определенным названием в библиотеке.
+        //      Получать булевый флаг о том, есть ли определенная книга на руках у пользователя.
+        //     Получать количество книг на руках у пользователя.
+        //Получение последней вышедшей книги.
+        //Получение списка всех книг, отсортированного в алфавитном порядке по названию.
+        //Получение списка всех книг, отсортированного в порядке убывания года их выхода.
+
+        public IEnumerable<Book> SelectByGenre(string Genre)
+        {
+           
+                using (var db = new AppContext())
+                {
+                    var BookList = db.Books.Where(b => b.Genre == Genre).ToList();
+                    return BookList;
+                }
+ 
+        }
+        public IEnumerable<Book> SelectByYears(int value1, int value2)
+        {
+            using (var db = new AppContext())
+            {
+                var BookList = db.Books.Where(b => b.Year >= value1).Where(b => b.Year <= value2).ToList();
+                return BookList;
+            }
+        }
+
+
     }
 }

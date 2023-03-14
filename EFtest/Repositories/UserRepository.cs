@@ -58,10 +58,11 @@ namespace EFtest.Repositories
         /// Удаление пользователя
         /// </summary>
         /// <param name="user"></param>
-        public void DeleteUser(User user)
+        public void DeleteUser(int id)
         {
             using (var db = new AppContext())
             {
+                var user = db.Users.FirstOrDefault(user => user.Id == id);
                 db.Users.Remove(user);
                 db.SaveChanges();
             }

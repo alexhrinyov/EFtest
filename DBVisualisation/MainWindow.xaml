@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DBVisualisation"
         mc:Ignorable="d"
-        Title="Библиотека" Height="450" Width="800">
+        Title="Библиотека" Height="700" Width="900">
     <Window.Resources>
         <Style x:Name="ButtonStyle" TargetType="Button">
             <Setter Property="ItemsControl.FontFamily" Value="Times New Roman"/>
@@ -35,13 +35,19 @@
                 <StackPanel>
                     <RadioButton x:Name="Users" Content="Пользователи"></RadioButton>
                     <RadioButton x:Name="Books" Content="Книги"></RadioButton>
-                    <Label Content="Id:"/>
+                    <Label Content="Id для поиска, изменения и удаления:"/>
                     <TextBox x:Name="IdBox" Width="25" HorizontalAlignment="Left" Margin="5"/>
                 </StackPanel>
             </GroupBox>
-            <GroupBox Header="Данные" Height="100">
+            <GroupBox Header="Данные для операций" Height="auto">
                 <Grid>
                     <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
@@ -49,13 +55,31 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-
+                    <Label Grid.Column="0" Grid.Row="0" >Имя пользователя:</Label>
+                    <Label Grid.Column="0" Grid.Row="1">Email:</Label>
+                    <Label Grid.Column="0" Grid.Row="2">Название книги:</Label>
+                    <Label Grid.Column="0" Grid.Row="3">Год:</Label>
+                    <Label Grid.Column="0" Grid.Row="4">Автор:</Label>
+                    <Label Grid.Column="0" Grid.Row="5">Жанр:</Label>
+                    <Label Grid.Column="0" Grid.Row="6">Id держателя:</Label>
+                    <Label Grid.Column="0" Grid.Row="7">Id книги:</Label>
+                    <TextBox x:Name="UserName" Grid.Column="1" Grid.Row="0" Width="auto" MinWidth="25" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="3"></TextBox>
+                    <TextBox x:Name="Email"  Grid.Column="1" Grid.Row="1" Width="auto" HorizontalAlignment="Left" MinWidth="25" VerticalContentAlignment="Center" Margin="3"></TextBox>
+                    <TextBox x:Name="Title"  Grid.Column="1" Grid.Row="2" Width="auto" HorizontalAlignment="Left" MinWidth="25" VerticalContentAlignment="Center" Margin="3"></TextBox>
+                    <TextBox x:Name="Year"  Grid.Column="1" Grid.Row="3" Width="auto" HorizontalAlignment="Left" MinWidth="25" VerticalContentAlignment="Center" Margin="3"></TextBox>
+                    <TextBox x:Name="Author" Grid.Column="1" Grid.Row="4" Width="auto" HorizontalAlignment="Left" MinWidth="25" VerticalContentAlignment="Center" Margin="3"></TextBox>
+                    <TextBox x:Name="Genre" Grid.Column="1" Grid.Row="5" Width="auto" HorizontalAlignment="Left" MinWidth="25" VerticalContentAlignment="Center" Margin="3"></TextBox>
+                    <TextBox x:Name="UserId" Grid.Column="1" Grid.Row="6" Width="auto" HorizontalAlignment="Left" MinWidth="25" VerticalContentAlignment="Center" Margin="3"></TextBox>
+                    <TextBox x:Name="BookId" Grid.Column="1" Grid.Row="7" Width="auto" HorizontalAlignment="Left" MinWidth="25" VerticalContentAlignment="Center" Margin="3"></TextBox>
                 </Grid>
- 
+
             </GroupBox>
             <Button Grid.Column="1" Grid.Row="1" Content="Показать всё" VerticalAlignment="Top" Click="SelectAll_Click"/>
             <Button x:Name="SelectById" Grid.Column="1" Grid.Row="1" Content="Показать по Id" VerticalAlignment="Top" Click="SelectById_Click"/>
             <Button x:Name="AddNew" Grid.Column="1" Grid.Row="1" Content="Добавить новую строку" VerticalAlignment="Top" Click="AddNew_Click"/>
+            <Button x:Name="Delete" Grid.Column="1" Grid.Row="1" Content="Удалить по Id" VerticalAlignment="Top" Click="Delete_Click"/>
+            <Button x:Name="Update" Grid.Column="1" Grid.Row="1" Content="Обновить имя/название" VerticalAlignment="Top" Click="Update_Click"/>
+            <Button x:Name="Belong" Grid.Column="1" Grid.Row="1" Content="Дать почитать" VerticalAlignment="Top" Click="Belong_Click" />
 
         </StackPanel>
     </Grid>

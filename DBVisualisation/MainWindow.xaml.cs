@@ -64,7 +64,98 @@ namespace DBVisualisation
 
         private void AddNew_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if (Users.IsChecked == true)
+                {
+                    User user = new User() { Name = UserName.Text, Email = Email.Text };
+                    userRepository.AddNew(user);
+                    MessageBox.Show("Пользователь внесён!");
+                }
+                if (Users.IsChecked == false)
+                {
+                    if (Books.IsChecked == true)
+                    {
+                        Book book = new Book() { Title = Title.Text, Author = Author.Text, Genre = Genre.Text, Year = int.Parse(Year.Text) };
+                        bookRepository.AddNew(book);
+                        MessageBox.Show("Книга внесена!");
+                    }
+                    else
+                        MessageBox.Show("Ничего не выбрано!");
 
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString());
+            }
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (Users.IsChecked == true)
+                {
+                    userRepository.DeleteUser(int.Parse( IdBox.Text));
+                    MessageBox.Show("Пользователь удалён!");
+                }
+                if (Users.IsChecked == false)
+                {
+                    if (Books.IsChecked == true)
+                    {
+
+                        bookRepository.DeleteBook(int.Parse(IdBox.Text));
+                        MessageBox.Show("Книга удалена!");
+                    }
+                    else
+                        MessageBox.Show("Ничего не выбрано!");
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString());
+            }
+        }
+
+        private void Update_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (Users.IsChecked == true)
+                {
+                    userRepository.UpdateName(int.Parse(IdBox.Text), UserName.Text);
+                    MessageBox.Show("Имя изменено!");
+                }
+                if (Users.IsChecked == false)
+                {
+                    if (Books.IsChecked == true)
+                    {
+
+                        bookRepository.UpdateYear(int.Parse(IdBox.Text), int.Parse(Year.Text));
+                        MessageBox.Show("Год изменен!");
+                    }
+                    else
+                        MessageBox.Show("Ничего не выбрано!");
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString());
+            }
+        }
+
+        private void Belong_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                bookRepository.Belong(int.Parse(UserId.Text), int.Parse(BookId.Text));
+                MessageBox.Show("Дали пользователю книгу на руки!");
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString());
+            }
         }
     }
 }

@@ -21,15 +21,19 @@
         <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Добро пожаловать в бибилиотеку" Background="Bisque" FontSize="22" HorizontalContentAlignment="Center" Foreground="Fuchsia"/>
-        <DataGrid x:Name="DataBaseView" Grid.Row="1" Grid.Column="0" AutoGenerateColumns="True" Margin="10,10,10,10" />
-        <StackPanel Grid.Row="1" Grid.Column="2" Width="auto">
+        <DataGrid  x:Name="DataBaseView" Grid.Row="1" Grid.Column="0" AutoGenerateColumns="True" Margin="10,10,10,10" />
+        <GroupBox Grid.Row="2" Grid.Column="0" Header="Фильтры">
+            <TextBox x:Name="GenreFilter"  Width="auto" MinWidth="75" Height="20" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="3" Text="Жанр" Foreground="Gray"></TextBox>
+        </GroupBox>    
+        <StackPanel Grid.Row="1" Grid.Column="2" Width="auto" Grid.RowSpan="2">
             <Label Content="Выберите, к какой таблице будут применяться операции:" Width="auto"/>
             <GroupBox Margin="5">
                 <StackPanel>

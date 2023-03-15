@@ -108,24 +108,16 @@ namespace EFtest.Repositories
         //Получение списка всех книг, отсортированного в алфавитном порядке по названию.
         //Получение списка всех книг, отсортированного в порядке убывания года их выхода.
 
-        public IEnumerable<Book> SelectByGenre(string Genre)
+
+        
+        public IEnumerable<Book> Filter(ref IQueryable<Book> books, BookFiltersModel filters)
         {
-           
-                using (var db = new AppContext())
-                {
-                    var BookList = db.Books.Where(b => b.Genre == Genre).ToList();
-                    return BookList;
-                }
- 
+            var predicates = BookFilterModelExtensions.GetPredicates(filters).ToList();
+            //не понимаю это выражение
+            books = books.Where(b => predicates.All(predicate => predicate(b)));
+            return books;
         }
-        public IEnumerable<Book> SelectByYears(int value1, int value2)
-        {
-            using (var db = new AppContext())
-            {
-                var BookList = db.Books.Where(b => b.Year >= value1).Where(b => b.Year <= value2).ToList();
-                return BookList;
-            }
-        }
+
 
 
     }

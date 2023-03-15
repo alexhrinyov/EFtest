@@ -20,11 +20,13 @@ namespace EFtest.Entities
         //Получение списка всех книг, отсортированного в порядке убывания года их выхода.
 
         public string Genre { get; set; }
-        public int YearValue1 { get; set; }
-        public int YearValue2 { get; set; }
+        public int? YearValue1 { get; set; }
+        public int? YearValue2 { get; set; }
         public string Author { get; set; }
         public string Title { get; set; }
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
+
+       
 
     }
 }

@@ -31,7 +31,35 @@
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Добро пожаловать в бибилиотеку" Background="Bisque" FontSize="22" HorizontalContentAlignment="Center" Foreground="Fuchsia"/>
         <DataGrid  x:Name="DataBaseView" Grid.Row="1" Grid.Column="0" AutoGenerateColumns="True" Margin="10,10,10,10" />
         <GroupBox Grid.Row="2" Grid.Column="0" Header="Фильтры">
-            <TextBox x:Name="GenreFilter"  Width="auto" MinWidth="75" Height="20" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="3" Text="Жанр" Foreground="Gray"></TextBox>
+            <StackPanel>
+                <TextBox x:Name="GenreFilter"  Width="auto" MinWidth="75" 
+                     Height="20" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
+                     Margin="3" Text="Жанр" Foreground="Gray" GotFocus="GenreFilter_GotFocus" LostFocus="GenreFilter_LostFocus">
+                </TextBox>
+                <TextBox x:Name="Year1Filter"  Width="auto" MinWidth="75" 
+                     Height="20" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
+                     Margin="3" Text="Год (начало)" Foreground="Gray">
+                </TextBox>
+                <TextBox x:Name="Year2Filter"  Width="auto" MinWidth="75" 
+                     Height="20" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
+                     Margin="3" Text="Год (конец)" Foreground="Gray">
+                </TextBox>
+                <TextBox x:Name="AuthorFilter"  Width="auto" MinWidth="75" 
+                     Height="20" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
+                     Margin="3" Text="Автор" Foreground="Gray">
+                </TextBox>
+                <TextBox x:Name="TitleFilter"  Width="auto" MinWidth="75" 
+                     Height="20" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
+                     Margin="3" Text="Название" Foreground="Gray">
+                </TextBox>
+                <TextBox x:Name="UserIdFilter"  Width="auto" MinWidth="75" 
+                     Height="20" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
+                     Margin="3" Text="Id пользователя" Foreground="Gray">
+                </TextBox>
+                <Button x:Name ="ApplyFilters" Content="Применить фильтры" HorizontalAlignment="Left"/>
+            </StackPanel>
+            
+            
         </GroupBox>    
         <StackPanel Grid.Row="1" Grid.Column="2" Width="auto" Grid.RowSpan="2">
             <Label Content="Выберите, к какой таблице будут применяться операции:" Width="auto"/>

@@ -157,5 +157,24 @@ namespace DBVisualisation
                 MessageBox.Show(exc.ToString());
             }
         }
+
+        private void GenreFilter_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (GenreFilter.Text == "Жанр")
+            { 
+                GenreFilter.Text = String.Empty;
+                GenreFilter.Foreground = new SolidColorBrush(Colors.Black);
+            }
+        }
+
+        private void GenreFilter_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (GenreFilter.Text == String.Empty)
+            {
+                GenreFilter.Foreground = new SolidColorBrush(Colors.Gray);
+                GenreFilter.Text = "Жанр";
+            }
+                
+        }
     }
 }

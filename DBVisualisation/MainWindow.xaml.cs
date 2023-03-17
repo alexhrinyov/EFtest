@@ -29,6 +29,7 @@ namespace DBVisualisation
             InitializeComponent();
             userRepository = new UserRepository();
             bookRepository = new BookRepository();
+            SortOption.ItemsSource = new List<string>() {"Без сортировки", "По названию", "По дате выхода" };
         }
 
         private void SelectAll_Click(object sender, RoutedEventArgs e)
@@ -175,6 +176,142 @@ namespace DBVisualisation
                 GenreFilter.Text = "Жанр";
             }
                 
+        }
+
+        private void Year1Filter_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (Year1Filter.Text == "Год (начало)")
+            {
+                Year1Filter.Text = String.Empty;
+                Year1Filter.Foreground = new SolidColorBrush(Colors.Black);
+            }
+        }
+
+        private void Year1Filter_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (Year1Filter.Text == String.Empty)
+            {
+                Year1Filter.Foreground = new SolidColorBrush(Colors.Gray);
+                Year1Filter.Text = "Год (начало)";
+            }
+        }
+
+        private void Year2Filter_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (Year2Filter.Text == "Год (конец)")
+            {
+                Year2Filter.Text = String.Empty;
+                Year2Filter.Foreground = new SolidColorBrush(Colors.Black);
+            }
+        }
+
+        private void Year2Filter_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (Year2Filter.Text == String.Empty)
+            {
+                Year2Filter.Foreground = new SolidColorBrush(Colors.Gray);
+                Year2Filter.Text = "Год (конец)";
+            }
+        }
+
+        private void AuthorFilter_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (AuthorFilter.Text == "Автор")
+            {
+                AuthorFilter.Text = String.Empty;
+                AuthorFilter.Foreground = new SolidColorBrush(Colors.Black);
+            }
+        }
+
+        private void AuthorFilter_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (AuthorFilter.Text == String.Empty)
+            {
+                AuthorFilter.Foreground = new SolidColorBrush(Colors.Gray);
+                AuthorFilter.Text = "Автор";
+            }
+        }
+
+        private void TitleFilter_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (TitleFilter.Text == "Название")
+            {
+                TitleFilter.Text = String.Empty;
+                TitleFilter.Foreground = new SolidColorBrush(Colors.Black);
+            }
+        }
+
+        private void TitleFilter_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (TitleFilter.Text == String.Empty)
+            {
+                TitleFilter.Foreground = new SolidColorBrush(Colors.Gray);
+                TitleFilter.Text = "Название";
+            }
+        }
+
+        private void UserIdFilter_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (UserIdFilter.Text == "Id пользователя")
+            {
+                UserIdFilter.Text = String.Empty;
+                UserIdFilter.Foreground = new SolidColorBrush(Colors.Black);
+            }
+        }
+
+        private void UserIdFilter_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (UserIdFilter.Text == String.Empty)
+            {
+                UserIdFilter.Foreground = new SolidColorBrush(Colors.Gray);
+                UserIdFilter.Text = "Id пользователя";
+            }
+        }
+
+        private void ApplyFilters_Click(object sender, RoutedEventArgs e)
+        {
+            int parseResult;
+            try
+            {
+                // создание набора фильтров
+                BookFiltersModel bookFiltersModel = new BookFiltersModel();
+                if(AuthorFilter.Text!="Автор")
+                    bookFiltersModel.Author = AuthorFilter.Text;
+                if (int.TryParse(Year1Filter.Text, out parseResult))
+                    bookFiltersModel.YearValue1 = parseResult;
+                if (int.TryParse(Year2Filter.Text, out parseResult))
+                    bookFiltersModel.YearValue2 = parseResult;
+                if (GenreFilter.Text != "Жанр")
+                    bookFiltersModel.Genre = GenreFilter.Text;
+                if (TitleFilter.Text != "Название")
+                    bookFiltersModel.Title = TitleFilter.Text;
+                if (int.TryParse(UserIdFilter.Text, out parseResult))
+                    bookFiltersModel.UserId = parseResult;
+
+                //Получение списка всех книг, отсортированного в алфавитном порядке по названию.
+                //Получение списка всех книг, отсортированного в порядке убывания года их выхода.
+                switch (SortOption.Text)
+                {
+                    //"По названию", "По дате выхода" Без сортировки
+                    case "По названию":
+                        DataBaseView.ItemsSource = bookRepository.Filter(bookFiltersModel).OrderBy(b => b.Title);
+                        break;
+                    case "По дате выхода":
+                        DataBaseView.ItemsSource = bookRepository.Filter(bookFiltersModel).OrderByDescending(b => b.Year);
+                        break;
+                    case "Без сортировки":
+                        DataBaseView.ItemsSource = bookRepository.Filter(bookFiltersModel);
+                        break;
+                    default:
+                        DataBaseView.ItemsSource = bookRepository.Filter(bookFiltersModel);
+                        break;
+                }                    
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

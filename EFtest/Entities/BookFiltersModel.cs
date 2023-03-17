@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace EFtest.Entities
 {
+    /// <summary>
+    /// Модель набора фильтров
+    /// </summary>
     public class BookFiltersModel
     {
         // Новые задания

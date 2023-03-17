@@ -38,25 +38,29 @@
                 </TextBox>
                 <TextBox x:Name="Year1Filter"  Width="auto" MinWidth="75" 
                      Height="20" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
-                     Margin="3" Text="Год (начало)" Foreground="Gray">
+                     Margin="3" Text="Год (начало)" Foreground="Gray" GotFocus="Year1Filter_GotFocus" LostFocus="Year1Filter_LostFocus">
                 </TextBox>
                 <TextBox x:Name="Year2Filter"  Width="auto" MinWidth="75" 
                      Height="20" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
-                     Margin="3" Text="Год (конец)" Foreground="Gray">
+                     Margin="3" Text="Год (конец)" Foreground="Gray" GotFocus="Year2Filter_GotFocus" LostFocus="Year2Filter_LostFocus">
                 </TextBox>
                 <TextBox x:Name="AuthorFilter"  Width="auto" MinWidth="75" 
                      Height="20" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
-                     Margin="3" Text="Автор" Foreground="Gray">
+                     Margin="3" Text="Автор" Foreground="Gray" GotFocus="AuthorFilter_GotFocus" LostFocus="AuthorFilter_LostFocus">
                 </TextBox>
                 <TextBox x:Name="TitleFilter"  Width="auto" MinWidth="75" 
                      Height="20" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
-                     Margin="3" Text="Название" Foreground="Gray">
+                     Margin="3" Text="Название" Foreground="Gray" GotFocus="TitleFilter_GotFocus" LostFocus="TitleFilter_LostFocus">
                 </TextBox>
                 <TextBox x:Name="UserIdFilter"  Width="auto" MinWidth="75" 
                      Height="20" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
-                     Margin="3" Text="Id пользователя" Foreground="Gray">
+                     Margin="3" Text="Id пользователя" Foreground="Gray" GotFocus="UserIdFilter_GotFocus" LostFocus="UserIdFilter_LostFocus">
                 </TextBox>
-                <Button x:Name ="ApplyFilters" Content="Применить фильтры" HorizontalAlignment="Left"/>
+                <Label Content="Опция сортировки:"/>
+                <ComboBox x:Name="SortOption" Height="20" Width="150" HorizontalAlignment="Left">
+                    
+                </ComboBox>
+                <Button x:Name ="ApplyFilters" Content="Применить фильтры" HorizontalAlignment="Left" Click="ApplyFilters_Click"/>
             </StackPanel>
             
             

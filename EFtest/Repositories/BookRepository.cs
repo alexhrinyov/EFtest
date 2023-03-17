@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EFtest.Entities;
+using static System.Reflection.Metadata.BlobBuilder;
 
 
 namespace EFtest.Repositories
@@ -109,16 +110,29 @@ namespace EFtest.Repositories
         //Получение списка всех книг, отсортированного в порядке убывания года их выхода.
 
 
-        
-        public IEnumerable<Book> Filter(ref IQueryable<Book> books, BookFiltersModel filters)
+        /// <summary>
+        /// Фильтрация книг
+        /// </summary>
+        /// <param name="filters"></param>
+        /// <returns></returns>
+        public IEnumerable<Book> Filter(BookFiltersModel filters)
         {
-            var predicates = BookFilterModelExtensions.GetPredicates(filters).ToList();
-            //не понимаю это выражение
-            books = books.Where(b => predicates.All(predicate => predicate(b)));
-            return books;
+          
+            using (var db = new AppContext())
+            {
+                var BookList = db.Books.ToList();
+                var predicates = BookFilterModelExtensions.GetPredicates(filters).ToList();
+                //не понимаю это выражение
+                var books = BookList.Where(book => predicates.All(predicate => predicate(book)));
+                return books.ToList();
+            }
+
+               
         }
 
+        
 
+        
 
     }
 }
